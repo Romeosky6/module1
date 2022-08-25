@@ -1,0 +1,46 @@
+<section>
+
+    <aside>
+        <%= for (const customer of customersInfo){ %> 
+        <p><% customer.customerName %> </p>
+        <p><% customer.contactLastName %> <% data.customerInfo.contactFirstName %> </p>
+        <p><% customer.addressLine1 %></p>
+        <%= if(customer.addressLine2 !== null){%><p><% customer.addressLine2 %> </p><%= } %>  
+        <p><% data.customerInfo.city %></p>
+        <%= }; %> 
+    </aside>
+
+    <aside>
+            <h2>Purchase Order N° <% detail.orderNumber %> </h2>
+                <table>
+                    
+                    <thead>
+                        <tr>
+                            <td>Product</td>
+                            <td>Unit Price</td>
+                            <td>Quantity</td>
+                            <td>Total Price</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <%= for (const detail of purchaseOrder){ %>
+                            <td><% detail.productName %> </td>
+                            <td><% detail.priceEach %></td>
+                            <td><% detail.quantityOrdered %></td>
+                            <td><% detail.totalPrice %></td>
+                        </tr>
+                        <%= } %>
+                        <tr>
+                        <%= for (const price of priceDetails){ %>
+                            <td>Total amount excluding tax <% price.ht %> </td>
+                            <td>Taxes 20% <% price.tva %> </td>
+                            <td>Total amount tax included <% price.ttc %> </td>
+                        </tr>
+                        <%= } %>
+                    </tbody>
+                </table> 
+    </aside>
+
+
+</section>
